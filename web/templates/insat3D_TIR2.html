@@ -1,27 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <!--custom css-->
-        <link rel="stylesheet" href="{{url_for('static','filename'='css/main.css')}}">
-        <title>Nowcasting</title>
-    </head>
-<body>
-    <!--Header-->
-    <nav class="navbar sticky-top navbar-light bg-light d-flex justify-content-center">
-        <div class="navbar-brand">
-          <h4>NOWCASTING OF SATELLITE IMAGES</h4>
-        </div>
-    </nav>
-    <!--Header ends-->
-    <br>
-    <!--Image Slider-->
+{% extends "layout.html" %}
+
+{% block content %}
+
     <div class="container">      
         <div class="row d-flex justify-content-center">
             <img id="img" src="img/img1.jpg" width="450px" height="450px"> 
@@ -115,5 +95,4 @@
             isPaused = false;
         });            
     </script>
-</body>
-</html>
+{% endblock %}

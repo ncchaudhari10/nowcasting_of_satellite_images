@@ -1,27 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <!--custom css-->
-        <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
-        <title>Nowcasting</title>
-    </head>
-<body>
-    <!--Header-->
-    <nav class="navbar sticky-top navbar-dark bg-info d-flex justify-content-center">
-        <div class="navbar-brand">
-          <h4>NOWCASTING OF SATELLITE IMAGES</h4>
-        </div>
-    </nav>
-    <!--Header ends-->
-    <br>
-    <!--Image Slider-->
+{% extends "layout.html" %}
+
+{% block content %}
+
     <div class="container">      
         <div class="row d-flex justify-content-center">
             <img id="img" src="img/img1.jpg" width="450px" height="450px"> 
@@ -29,9 +9,8 @@
         <br><br>
         <div class="row">
             <div class="col-xl-2">          
-                <button class="fwd btn btn-transparent" id="backward" onclick="Backward();"><i class="fas fa-2x fa-angle-double-left"></i></button>
-                <button class="pp btn btn-primary"><i class="fas fa-pause"></i></button>
-                <button class="bwd btn btn-transparent" id="forward" onclick="Forward();"><i class="fas fa-2x fa-angle-double-right"></i></button>
+                <button class="pause btn btn-primary"><i class="fas fa-pause-circle"></i></button>
+                <button class="play btn btn-primary"><i class="fas fa-play"></i></button>
             </div>
             <div class="col-xl-10">
                 <div class="form-group">        
@@ -83,57 +62,38 @@
                 x = (x === images.length - 1) ? 0 : x + 1;
                 document.getElementById("img").src = images[x];
             }
-        }
-        function displayNextImage() {
-            x = (x === images.length - 1) ? 0 : x + 1;
-            document.getElementById("img").src = images[x]; 
-        }
-
-        slider.addEventListener('mouseup', function() {
-        t=this.value;
-        if (t<=15) {  label_val(0);}  
-        else if(t<=45&&t>15){ label_val(1);}
-        else if(t<=75&&t>45){ label_val(2);}
-        else if(t<=105&&t>75){ label_val(3);}
-        else if(t<=135&&t>105){ label_val(4);}
-        else if(t<=165&&t>135){ label_val(5);}
-        else if(t>165){ label_val(6);}       
-        });
-
-        function label_val(a){
-        slider.value=a*30;
-        document.getElementById("img").src=images[a];
-        if(a===6){ document.getElementById("img").src=images[a-1]; } }        
+        }        
+        // function displayPreviousImage() {
+        //  if(!isPaused){
+        //    x = (x <= 0) ? images.length - 1 : x - 1;
+        //    document.getElementById("img").src = images[x];
+        //  }
+        //}
         
-        function Backward(){
-            if(slider.value<=0){ slider.stepUp(180);} else{ slider.stepDown(30); displayPreviousImage();}                   
-        }
-        function Forward(){
-            if(slider.value<180){slider.stepUp(30); displayNextImage();}  else{ slider.stepDown(180);}
-        }
-        
+        // function startTimer() {
+        //   if(!isPaused){
+        //     setInterval(displayNextImage, 1000);
+        //   }
+        // }
         var images = [], x = -1;         
   
         //TIR1
-        images[0] = "{{url_for('static', filename='insat3D/TIR1/TIR1_0.png')}}";
-        images[1] = "{{url_for('static', filename='insat3D/TIR1/TIR1_1.png')}}";
-        images[2] = "{{url_for('static', filename='insat3D/TIR1/TIR1_2.png')}}";
-        images[3] = "{{url_for('static', filename='insat3D/TIR1/TIR1_3.png')}}";
-        images[4] = "{{url_for('static', filename='insat3D/TIR1/TIR1_4.png')}}";
-        images[5] = "{{url_for('static', filename='insat3D/TIR1/TIR1_5.png')}}";               
-
+        //images[0] = "img/img1.jpg";
+        //images[1] = "img/img2.jpg";
+        //images[2] = "img/img3.jpg";
+        //images[3] = "img/img4.jpg";
+        //images[4] = "img/img5.jpg";
+        //images[5] = "img/img6.jpg";
 
         //with jquery
-        $('.pp').click(function(){        
-            icon = $(this).find("i");
-            if(icon.hasClass("fa-pause")){
-                icon.addClass("fa-play").removeClass("fa-pause");
-                isPaused=true;
-            }else{
-                icon.addClass("fa-pause").removeClass("fa-play");
-                isPaused=false;
-                }
-            });            
+        $('.pause').on('click', function(e) {
+            e.preventDefault();
+            isPaused = true;
+        });                
+        $('.play').on('click', function(e) {
+            e.preventDefault();
+            isPaused = false;
+        });            
     </script>
-</body>
-</html>
+
+{% endblock %}
