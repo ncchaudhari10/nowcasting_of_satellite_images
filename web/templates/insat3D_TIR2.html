@@ -72,6 +72,48 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    
+    <script>    
+        var slider = document.getElementById("myRange");
+        var isPaused = false;
+        var time = 0;
+        var mycounter=setInterval(function myfunction(){if(!isPaused){if(slider.value<180){slider.stepUp(30); displayNextImage();}  else{ slider.stepDown(180);}}},1000);
+        function displayNextImage() {
+            if(!isPaused){
+                x = (x === images.length - 1) ? 0 : x + 1;
+                document.getElementById("img").src = images[x];
+            }
+        }        
+        // function displayPreviousImage() {
+        //  if(!isPaused){
+        //    x = (x <= 0) ? images.length - 1 : x - 1;
+        //    document.getElementById("img").src = images[x];
+        //  }
+        //}
+        
+        // function startTimer() {
+        //   if(!isPaused){
+        //     setInterval(displayNextImage, 1000);
+        //   }
+        // }
+        var images = [], x = -1;         
+  
+        //TIR1
+        //images[0] = "img/img1.jpg";
+        //images[1] = "img/img2.jpg";
+        //images[2] = "img/img3.jpg";
+        //images[3] = "img/img4.jpg";
+        //images[4] = "img/img5.jpg";
+        //images[5] = "img/img6.jpg";
+
+        //with jquery
+        $('.pause').on('click', function(e) {
+            e.preventDefault();
+            isPaused = true;
+        });                
+        $('.play').on('click', function(e) {
+            e.preventDefault();
+            isPaused = false;
+        });            
+    </script>
 </body>
 </html>
