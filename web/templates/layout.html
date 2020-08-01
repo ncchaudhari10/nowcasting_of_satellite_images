@@ -12,17 +12,31 @@
         <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
         <title>Nowcasting</title>
     </head>
-<body>
+    <body>
     <!--Header-->
-    <nav class="navbar sticky-top navbar-light bg-light d-flex justify-content-center">
+    <nav class="navbar sticky-top navbar-light bg-transparent">
         <div class="navbar-brand">
-          <h4>NOWCASTING OF SATELLITE IMAGES</h4>
+          <h4>NOWCASTING</h4>
         </div>
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Documentation</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:;" id="view">Ground Truth</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">Satellite</a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="{{url_for('insat3D_TIR1')}}">INSAT-3D</a>
+                    <a class="dropdown-item" href="{{url_for('insat3D_TIR1')}}">INSAT-3DR</a>
+                </div>
+            </li>
+        </ul>
     </nav>
     <!--Header ends-->
     <br>
-    <!--Image Slider-->
-    <!--Image Slider-->
+    
     {% block content %}   {% endblock %}
 
 </body>
