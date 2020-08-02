@@ -2,12 +2,10 @@ from flask import Flask, render_template, url_for
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+
 
 #INSAT - 3D
-@app.route('/INSAT-3D/TIR1')
+@app.route('/')
 def insat3D_TIR1():
     return render_template('insat3D_TIR1.html')
 

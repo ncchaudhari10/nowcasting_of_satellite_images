@@ -19,13 +19,13 @@
                     <input type="range" class="custom-range slider" min="0" max="180" value="0" id="myRange">
                 </div>
                 <ul class="range-labels d-flex justify-content-between list-unstyled">
-                    <li>0</li>
-                    <li>T(n+1)</li>
-                    <li>T(n+2)</li>
-                    <li>T(n+3)</li>
-                    <li>T(n+4)</li>
-                    <li>T(n+5)</li>
-                    <li>T(n+6)</li>
+                    <li onclick="label_val(0)">0</li>
+                    <li onclick="label_val(1)">T(n+1)</li>
+                    <li onclick="label_val(2)">T(n+2)</li>
+                    <li onclick="label_val(3)">T(n+3)</li>
+                    <li onclick="label_val(4)">T(n+4)</li>
+                    <li onclick="label_val(5)">T(n+5)</li>
+                    <li onclick="label_val(6)">T(n+6)</li>
                 </ul>
             </div>
         </div>
@@ -65,9 +65,10 @@
                 document.getElementById("img").src = images[x];
             }
         }
-        function displayNextImage() {
-            x = (x === images.length - 1) ? 0 : x + 1;
-            document.getElementById("img").src = images[x]; 
+        function displayPreviousImage() {                   
+            if(x===images.length-1){ x=x+1; document.getElementById("img").src = images[x-1]; x=x-2;}
+            else if(x<=0){ document.getElementById("img").src = images[x]; x=images.length-1;}
+            else{ document.getElementById("img").src=images[x--];}
         }
 
         slider.addEventListener('mouseup', function() {
