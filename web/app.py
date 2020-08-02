@@ -1,7 +1,11 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for,request
+import os
+from predictor import predictorsih
 
 app = Flask(__name__)
 
+
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 
 #INSAT - 3D
@@ -28,6 +32,32 @@ def insat3D_MIR():
 @app.route('/INSAT-3D/SWIR')
 def insat3D_SWIR():
     return render_template('insat3D_SWIR.html')
+
+
+@app.route("/upload", methods=['POST'])
+def upload():
+    target = os.path.join(APP_ROOT, 'uploadedData/')
+    print(target)
+
+    if not os.path.isdir(target):
+        os.mkdir(target)
+
+    for file in request.files.getlist("file"):
+        print(file)
+        filename = file.filename
+        destination = "/".join([target, filename])
+        print(destination)
+        file.save(destination)
+    predictorsih()
+    return render_template("realTimePred.html")
+
+@app.route('/setfile')
+def setfile():
+    return render_template('upload.html')
+
+
+
+
 
 if __name__ == "__main__":
     app.run(debug = True)
