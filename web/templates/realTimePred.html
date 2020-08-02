@@ -1,0 +1,135 @@
+
+{% extends 'layout.html' %}
+
+
+
+
+{% block content %}
+
+
+
+
+
+<br>
+<div class="container" style="padding-bottom: 10rem;">
+      <div class="d-flex justify-content-center">       
+          <!-- <div class="col-lg-12 col-xs-12"> -->
+        <img id="img" src="img/prasanna1.jpg" width=450px height="450px"> 
+          <!-- </div> -->
+         <!-- <div class="col-lg-6 col-xs-12"> -->
+        <div style="display: none;" id="ground"><img id="img" src="{{url_for('static', filename='insat3D/WV/WV_0.png')}}" width=450px height="450px"></div>
+        <!-- </div>   style="padding-left:10px;"-->
+       
+      </div>
+      <div class="cropAnimation">
+
+
+      </div>
+      
+      <br><br>
+      <div class="row">
+        <div class="col-xl-2">
+            <button class="fwd btn btn-transparent" id="backward" onclick="Backward();"><i class="fas fa-2x fa-angle-double-left"></i></button>     
+            <button class="pp btn btn-primary"><i class="fas fa-pause"></i></button>
+            <button class="bwd btn btn-transparent" id="forward" onclick="Forward();"><i class="fas fa-2x fa-angle-double-right"></i></button>
+        </div>
+<div class="col-xl-10">
+      <div class="form-group">        
+        <input type="range" class="custom-range slider" min="0" max="180" value="0" id="myRange">
+      </div>
+      <ul class="range-labels d-flex justify-content-between">
+        <li onclick="label_val(0)">T(n)</li>
+        <li onclick="label_val(1)">T(n+1)</li>
+        <li onclick="label_val(2)">T(n+2)</li>
+        <li onclick="label_val(3)">T(n+3)</li>
+        <li onclick="label_val(4)">T(n+4)</li>
+        <li onclick="label_val(5)">T(n+5)</li>
+        <li onclick="label_val(6)">T(n+6)</li>
+      </ul>
+</div>
+</div>
+</div>
+<!-- <section id="tabs"> -->
+<!-- </section> -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script>    
+      var slider = document.getElementById("myRange");
+      var output = document.getElementById("demo");
+      //var counter=document.getElementById("counter");
+     // var forward=document.getElementById('forward');
+     // var backward=document.getElementById('backward');
+      var isPaused = false;
+      var time = 0;
+      var mycounter=setInterval(function myfunction(){if(!isPaused){if(slider.value<180){slider.stepUp(30); displayNextImage();}  else{ slider.stepDown(180);} //output.innerHTML = slider.value;
+    }},1000);
+    slider.addEventListener('mouseup', function() {
+      t=this.value;
+      if (t<=15) {  label_val(0);}  
+      else if(t<=45&&t>15){ label_val(1);}
+      else if(t<=75&&t>45){ label_val(2);}
+      else if(t<=105&&t>75){ label_val(3);}
+      else if(t<=135&&t>105){ label_val(4);}
+      else if(t<=165&&t>135){ label_val(5);}
+      else if(t>165){ label_val(6);}       
+  });
+   
+    function label_val(a){
+      slider.value=a*30;
+      document.getElementById("img").src=images[a];
+      if(a===6){ document.getElementById("img").src=images[a-1]; }
+    } 
+    function Backward(){
+        //isPaused=true;
+        if(slider.value<=0){ slider.stepUp(180);} else{ slider.stepDown(30); displayPreviousImage();}                   
+    }
+    function Forward(){
+        //isPaused=true;
+        if(slider.value<180){slider.stepUp(30); displayNextImage();}  else{ slider.stepDown(180);}
+    }
+           function displayNextImage() {
+                    x = (x === images.length - 1) ? 0 : x + 1;
+                     document.getElementById("img").src = images[x]; 
+                }
+            
+                function displayPreviousImage() {
+                   //x = (x <= 0) ? images.length - 1 : x - 1;
+                   
+                   if(x===images.length-1){ x=x+1; document.getElementById("img").src = images[x-1]; x=x-2;}
+                   else if(x<=0){ document.getElementById("img").src = images[x]; x=images.length-1;}
+                   else{ document.getElementById("img").src=images[x--];}
+                }
+      
+                var images = [], x = -1;             
+                
+               
+                     //water vapours
+                     images[0] = "{{url_for('static', filename='predictedImages/seq1.png')}}";
+                     images[1] = "{{url_for('static', filename='predictedImages/seq2.png')}}";
+                     images[2] = "{{url_for('static', filename='predictedImages/seq3.png')}}";
+                     images[3] = "{{url_for('static', filename='predictedImages/seq4.png')}}";
+                     images[4] = "{{url_for('static', filename='predictedImages/seq5.png')}}";
+                     images[5] = "{{url_for('static', filename='predictedImages/seq6.png')}}";              
+                
+                
+                $('.pp').click(function(){
+                    //$('#display_advance').toggle('1000');
+                    icon = $(this).find("i");
+                   if(icon.hasClass("fa-pause")){
+                      icon.addClass("fa-play").removeClass("fa-pause");
+                      isPaused=true;
+                    }else{
+                      icon.addClass("fa-pause").removeClass("fa-play");
+                      isPaused=false;
+                    }
+                  })                
+  </script>
+    <script>
+    function show_ground_truth(){
+      document.getElementById("ground").style.cssText="display: block; padding-left:10px";
+    }
+  </script>
+{% endblock %}
