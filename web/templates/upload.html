@@ -6,20 +6,17 @@
 
 {% block content %}
 
-
-<div class="upload-buuton" style="background-color: beige;">
+<div class="jumbotron">
+<div class="upload-buuton" >
     
-    <form
-      id="upload-form"
-      action="{{ url_for('upload') }}"
-      method="POST"
-      enctype="multipart/form-data"
-    >
+    <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data"
+    
       <strong>Files:</strong><br />
-      <input id="file-picker" type="file" name="file" multiple />
+      <input id="file-picker" class="myfile" type="file" name="file" multiple />
       <div id="msg"></div>
       <input type="submit" value="Upload!" id="upload-button" />
     </form>
+</div>
 </div>
   <script>
     $('#file-picker').change(function () {

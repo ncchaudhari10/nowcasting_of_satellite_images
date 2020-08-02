@@ -58,11 +58,9 @@
         var slider = document.getElementById("myRange");
         var isPaused = false;
         var mycounter=setInterval(function myfunction(){if(!isPaused){if(slider.value<180){slider.stepUp(30); displayNextImage();}  else{ slider.stepDown(180);}}},1000);
-        function displayNextImage() {
-            if(!isPaused){
+        function displayNextImage() {          
                 x = (x === images.length - 1) ? 0 : x + 1;
-                document.getElementById("img").src = images[x];
-            }
+                document.getElementById("img").src = images[x];          
         }        
         function displayPreviousImage() {                   
             if(x===images.length-1){ x=x+1; document.getElementById("img").src = images[x-1]; x=x-2;}
