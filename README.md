@@ -11,7 +11,7 @@
   * Pandas `pip install pandas`
   * H5py `pip install h5py`
   * xarray `pip install xarray`
-  * tensorflow-gpu==2.2.0 `as this version is not available for pip, kindly use google collab for training the models`
+  * tensorflow-gpu==2.2.0 `as this version is not available for pip, kindly use google colab for training the models`
 
 ## Model Architecture:
 ![alt text](https://github.com/dr3aMer10/NM374_Apollo6/blob/master/readme_imgs/model.png)
