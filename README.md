@@ -20,6 +20,7 @@
 ![alt text](https://github.com/dr3aMer10/NM374_Apollo6/blob/master/readme_imgs/webportal.png)
 
 ## Train:
+![alt text](https://github.com/dr3aMer10/NM374_Apollo6/edit/master/README.md)
 
 ## Results:
 ![alt text](https://github.com/dr3aMer10/NM374_Apollo6/blob/master/readme_imgs/resultTIR13D.png)
