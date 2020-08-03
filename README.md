@@ -20,12 +20,15 @@
 ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
 
 ## Results:
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![alt text](https://github.com/dr3aMer10/NM374_Apollo6/blob/master/readme_imgs/resultTIR13D.png)
 
-##### Error calculation between 1st and 2nd predicted frame
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+### Difference in 1st Ground Truth and 1st Predicted frame
+![alt text](https://github.com/dr3aMer10/NM374_Apollo6/blob/master/readme_imgs/errorcal.png)
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![alt text](https://github.com/dr3aMer10/NM374_Apollo6/blob/master/readme_imgs/errorplot_resultTIR13D.png)
 
 ## Validation of prediction on 18th May '20 and 25th July '20 Data
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![alt text](https://github.com/dr3aMer10/NM374_Apollo6/blob/master/readme_imgs/correlationtir1.png)
+![alt text](https://github.com/dr3aMer10/NM374_Apollo6/blob/master/readme_imgs/ROC25july.png)
+![alt text](https://github.com/dr3aMer10/NM374_Apollo6/blob/master/readme_imgs/validation_insat3d_TIR.png)
+![alt text](https://github.com/dr3aMer10/NM374_Apollo6/blob/master/readme_imgs/validation_insat3d_TIR_may.png)
