@@ -33,6 +33,31 @@ def insat3D_MIR():
 def insat3D_SWIR():
     return render_template('insat3D_SWIR.html')
 
+#3DR
+@app.route('/INSAT-3DR/TIR1')
+def insat3DR_TIR1():
+    return render_template('insat3DR_TIR1.html')
+
+@app.route('/INSAT-3DR/TIR2')
+def insat3DR_TIR2():
+    return render_template('insat3DR_TIR2.html')
+
+@app.route('/INSAT-3DR/WV')
+def insat3DR_WV():
+    return render_template('insat3DR_WV.html')
+
+@app.route('/INSAT-3DR/VIS')
+def insat3DR_VIS():
+    return render_template('insat3DR_VIS.html')
+
+@app.route('/INSAT-3DR/MIR')
+def insat3DR_MIR():
+    return render_template('insat3DR_MIR.html')
+
+@app.route('/INSAT-3DR/SWIR')
+def insat3DR_SWIR():
+    return render_template('insat3DR_SWIR.html')
+    
 
 @app.route("/upload", methods=['POST'])
 def upload():

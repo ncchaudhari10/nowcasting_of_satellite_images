@@ -4,8 +4,8 @@
     <!--Image Slider-->
     <div class="container">      
         <div class="row d-flex justify-content-center">
-            <img id="img" src="{{url_for('static', filename='insat3D/WV/WV_0.png')}}" width="450px" height="450px"> 
-            <div class="hide" id="ground"><img id="img" src="{{url_for('static', filename='insat3D/WV/WV_0.png')}}" width="450px" height="450px"></div>
+            <img id="img" src="{{url_for('static', filename='insat3DR/WV/WV_0.png')}}" width="450px" height="450px"> 
+            <div class="hide" id="ground"><img id="img" src="{{url_for('static', filename='insat3DR/WV/WV_0.png')}}" width="450px" height="450px"></div>
         </div>
         <br><br>
         <div class="row">
@@ -37,12 +37,12 @@
             <div class="col-xs-12 ">
                 <nav class="fixed-bottom">
                     <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                        <a class="nav-item nav-link" href="{{url_for('insat3D_TIR1')}}" aria-selected="false">Tir1</a>
-                        <a class="nav-item nav-link" href="{{url_for('insat3D_TIR2')}}" aria-selected="false">TIR-2</a>
-                        <a class="nav-item nav-link active" href="{{url_for('insat3D_WV')}}" aria-selected="true">Water Vapours</a>
-                        <a class="nav-item nav-link" href="{{url_for('insat3D_VIS')}}" aria-selected="false">Visible</a>
-                        <a class="nav-item nav-link" href="{{url_for('insat3D_SWIR')}}" aria-selected="false">SWIR</a>
-                        <a class="nav-item nav-link" href="{{url_for('insat3D_MIR')}}" aria-selected="false">MIR</a>
+                        <a class="nav-item nav-link" href="{{url_for('insat3DR_TIR1')}}" aria-selected="false">Tir1</a>
+                        <a class="nav-item nav-link" href="{{url_for('insat3DR_TIR2')}}" aria-selected="false">TIR-2</a>
+                        <a class="nav-item nav-link active" href="{{url_for('insat3DR_WV')}}" aria-selected="true">Water Vapours</a>
+                        <a class="nav-item nav-link" href="{{url_for('insat3DR_VIS')}}" aria-selected="false">Visible</a>
+                        <a class="nav-item nav-link" href="{{url_for('insat3DR_SWIR')}}" aria-selected="false">SWIR</a>
+                        <a class="nav-item nav-link" href="{{url_for('insat3DR_MIR')}}" aria-selected="false">MIR</a>
                     </div>
                 </nav>			
             </div>                
@@ -89,12 +89,12 @@
         var images = [], x = -1;         
   
         //TIR1
-        images[0] = "{{url_for('static', filename='insat3D/WV/WV_0.png')}}";
-        images[1] = "{{url_for('static', filename='insat3D/WV/WV_1.png')}}";
-        images[2] = "{{url_for('static', filename='insat3D/WV/WV_2.png')}}";
-        images[3] = "{{url_for('static', filename='insat3D/WV/WV_3.png')}}";
-        images[4] = "{{url_for('static', filename='insat3D/WV/WV_4.png')}}";
-        images[5] = "{{url_for('static', filename='insat3D/WV/WV_5.png')}}";               
+        images[0] = "{{url_for('static', filename='insat3DR/WV/WV_0.png')}}";
+        images[1] = "{{url_for('static', filename='insat3DR/WV/WV_1.png')}}";
+        images[2] = "{{url_for('static', filename='insat3DR/WV/WV_2.png')}}";
+        images[3] = "{{url_for('static', filename='insat3DR/WV/WV_3.png')}}";
+        images[4] = "{{url_for('static', filename='insat3DR/WV/WV_4.png')}}";
+        images[5] = "{{url_for('static', filename='insat3DR/WV/WV_5.png')}}";               
 
 
         //with jquery
