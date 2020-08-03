@@ -20,7 +20,8 @@
 ![alt text](https://github.com/dr3aMer10/NM374_Apollo6/blob/master/readme_imgs/webportal.png)
 
 ## Train:
-###### This model is trained on Google Colab. Due to the limited computation we cannot train 1616x1618 image. So, these input images are interpolated to 404x404 and set for training.
+###### This model is trained on Google Colab. Due to the limited computation we cannot train 1616x1618 image. So, these input images are interpolated to 404x404 and set for training. 100 images are used to train the model, resulting 94 training sequences and Validated on 30 images 
+
 ![alt text](https://github.com/dr3aMer10/NM374_Apollo6/blob/master/readme_imgs/interpolatedimg.png)
 
 ## Results:
