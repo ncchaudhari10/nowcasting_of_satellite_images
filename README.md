@@ -17,7 +17,7 @@
 ![alt text](https://github.com/dr3aMer10/NM374_Apollo6/blob/master/readme_imgs/model.png)
 
 ## Website portal for the Visualization:
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![alt text](https://github.com/dr3aMer10/NM374_Apollo6/blob/master/readme_imgs/webportal.png)
 
 ## Results:
 ![alt text](https://github.com/dr3aMer10/NM374_Apollo6/blob/master/readme_imgs/resultTIR13D.png)
