@@ -14,7 +14,7 @@
   * tensorflow-gpu==2.2.0 `as this version is not available for pip, kindly use google collab for training the models`
 
 ## Model Architecture:
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![alt text](https://github.com/dr3aMer10/NM374_Apollo6/blob/master/readme_imgs/model.png)
 
 ## Website portal for the Visualization:
 ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
