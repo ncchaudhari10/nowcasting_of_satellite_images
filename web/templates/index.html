@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Apollo6</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+  #loading{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #fff
+    url("{{url_for('static',filename='rocket.gif')}}")
+    /* url('https://loading.io/mod/spinner/dna/sample.gif') */
+     
+    no-repeat center center;	
+    z-index: 99999;
+    
+  }
+  img.loader {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width:6%;
+      padding-top:  250px;
+    }
+  #h1 {
+    top: 25%;
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    margin-top: 60px;
+    color: #242424;
+    font-weight: 600;
+    font-size: 35px;
+  }
+  
+  #h2 {
+    top: 35%;
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    margin-top: 25px;
+    color: #242424;
+    font-weight: 600;
+    font-size: 26px;
+  }
+  #h3 {
+    top: 38%;
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    margin-top: 25px;
+    color: #242424;
+    font-weight: 600;
+    font-size: 26px;
+  }
+  
+
+
+
+
+body {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  background: #e7e7e7;
+  font-family: "Open Sans", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+img {
+  max-width: 100%;
+}
+
+:focus {
+  outline: none;
+}
+
+.wrap {
+  max-width: 2050px;
+  margin: 0 auto;
+  padding: 3em;
+}
+.wrap h1 {
+  color: #4e4e4e;
+  margin: 1rem 0 2rem;
+}
+.wrap h1 .mark {
+  color: #0cb0af;
+  display: block;
+  margin-top: 1rem;
+}
+
+.info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  overflow: hidden;
+}
+.info-col {
+  width: 37%;
+}
+.info-col-left {
+  box-shadow: 10px 0 24px -16px rgba(0, 0, 0, 0.75);
+  padding-top: 12rem;
+}
+.info-col-left .info-item-wrap {
+  right: 0;
+}
+.info-col-left .info-item-text {
+  box-shadow: 10px 13px 30px -15px rgba(0, 0, 0, 0.75);
+}
+.info-col-left .triangle {
+  left: 0;
+}
+.info-col-left .icon {
+  left: 3rem;
+}
+.info-col-left .info-item-text {
+  text-align: right;
+}
+.info-col-right {
+  box-shadow: -10px 0 24px -16px rgba(0, 0, 0, 0.75);
+  padding-top: 5rem;
+}
+.info-col-right .info-item-wrap {
+  left: 0;
+}
+.info-col-right .info-item-text {
+  box-shadow: -10px 13px 30px -15px rgba(0, 0, 0, 0.75);
+}
+.info-col-right .triangle {
+  right: 0;
+}
+.info-col-right .icon {
+  right: 3rem;
+}
+.info-item {
+  position: relative;
+  margin-bottom: 2em;
+}
+.info-item-wrap {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+.info-item-triangle {
+  position: relative;
+  height: 22rem;
+}
+.info-item-triangle .triangle {
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+.info-item-triangle .triangle.triangle-top {
+  border-top: 11rem solid transparent;
+  border-bottom: 1px solid transparent;
+}
+.info-item-triangle .triangle.triangle-bottom {
+  border-top: 1px solid transparent;
+  border-bottom: 11rem solid transparent;
+  bottom: 0;
+}
+.info-item-triangle .icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.info-item-text {
+  box-sizing: border-box;
+  background: #fff;
+  padding: 2em;
+  min-height: 22rem;
+  position: relative;
+  z-index: 1;
+}
+.info-item-text h3 {
+  font-size: 1.5em;
+  color: #646464;
+  padding: 1em 0;
+}
+.info-item-text p {
+  color: #cccccc;
+  font-weight: 700;
+}
+.info-item.orange .triangle-top {
+  border-left-width: 19rem;
+  border-left-style: solid;
+  border-left-color: #f78f30;
+}
+.info-item.orange .triangle-bottom {
+  border-left-width: 19rem;
+  border-left-style: solid;
+  border-left-color: #ea7d2b;
+}
+.info-item.orange .icon {
+  width: 80px;
+  height: 80px;
+}
+.info-item.orange .mark {
+  color: #f78f30;
+}
+.info-item.green .triangle-top {
+  border-left-width: 19rem;
+  border-left-style: solid;
+  border-left-color: #1bbdc8;
+}
+.info-item.green .triangle-bottom {
+  border-left-width: 19rem;
+  border-left-style: solid;
+  border-left-color: #0db0af;
+}
+.info-item.green .icon {
+  width: 80px;
+  height: 72px;
+}
+.info-item.green .mark {
+  color: #1bbdc8;
+}
+.info-item.red .icon {
+  width: 72px;
+  height: 72px;
+}
+.info-item.red .triangle-top {
+  border-right-width: 19rem;
+  border-right-style: solid;
+  border-right-color: #ef4756;
+}
+.info-item.red .triangle-bottom {
+  border-right-width: 19rem;
+  border-right-style: solid;
+  border-right-color: #db4457;
+}
+.info-item.red .mark {
+  color: #ef4756;
+}
+.info-item.blue .icon {
+  width: 75px;
+  height: 72px;
+}
+.info-item.blue .triangle-top {
+  border-right-width: 19rem;
+  border-right-style: solid;
+  border-right-color: #125f8d;
+}
+.info-item.blue .triangle-bottom {
+  border-right-width: 19rem;
+  border-right-style: solid;
+  border-right-color: #0f556f;
+}
+.info-item.blue .mark {
+  color: #125f8d;
+}
+
+.text-down {
+  box-shadow: 3px 2px 31px -6px rgba(0, 0, 0, 0.75);
+  background: #ffffff;
+  margin-bottom: 10rem;
+}
+.text-down h2 {
+  color: #434b56;
+  font-size: 2em;
+  margin-bottom: .25em;
+}
+.text-down h2 .mark {
+  color: #f78f30;
+}
+.text-down p {
+  font-size: 1.4em;
+  color: #b1b1b1;
+}
+
+@media screen and (min-width: 401px) and (max-width: 1365px) {
+  div.info-item-triangle {
+    height: 16rem;
+  }
+  div.info-item-triangle .triangle.triangle-top {
+    border-top: 8rem solid transparent;
+  }
+  div.info-item-triangle .triangle.triangle-bottom {
+    border-bottom: 8rem solid transparent;
+  }
+  div.info-item-text {
+    min-height: 16rem;
+  }
+  div.info-item.orange .triangle-top {
+    border-left-width: 10rem;
+  }
+  div.info-item.orange .triangle-bottom {
+    border-left-width: 10rem;
+  }
+  div.info-item.green .triangle-top {
+    border-left-width: 10rem;
+  }
+  div.info-item.green .triangle-bottom {
+    border-left-width: 10rem;
+  }
+  div.info-item.red .triangle-top {
+    border-right-width: 10rem;
+  }
+  div.info-item.red .triangle-bottom {
+    border-right-width: 10rem;
+  }
+  div.info-item.blue .triangle-top {
+    border-right-width: 10rem;
+  }
+  div.info-item.blue .triangle-bottom {
+    border-right-width: 10rem;
+  }
+  div.info-col-right {
+    padding-top: 1rem;
+  }
+  div.info-col-right .icon {
+    right: 1.25rem;
+  }
+  div.info-col-left {
+    padding-top: 10.5rem;
+  }
+  div.info-col-left .icon {
+    left: 1.25rem;
+  }
+}
+@media screen and (min-width: 641px) and (max-width: 1365px) {
+  body {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 640px) {
+  body {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 970px) {
+  div.info {
+    flex-direction: column;
+  }
+  div.info-col {
+    width: 65%;
+    padding-top: 2rem;
+  }
+  div.info-item-text {
+    text-align: right;
+  }
+  div.info-item.red .triangle-top {
+    border-left: 10rem solid #ef4756;
+    border-right: none;
+  }
+  div.info-item.red .triangle-bottom {
+    border-left: 10rem solid #db4457;
+    border-right: none;
+  }
+  div.info-item.blue .triangle-top {
+    border-left: 10rem solid #125f8d;
+    border-right: none;
+  }
+  div.info-item.blue .triangle-bottom {
+    border-left: 10rem solid #0f556f;
+    border-right: none;
+  }
+  div.info-col-right {
+    box-shadow: 10px 0 24px -16px rgba(0, 0, 0, 0.75);
+  }
+  div.info-col-right .info-item-wrap {
+    left: auto;
+    right: 0;
+  }
+  div.info-col-right .triangle {
+    left: 0;
+    right: auto;
+  }
+  div.info-col-right .icon {
+    right: auto;
+    left: 1.25rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  .wrap div.info-item-wrap {
+    display: none;
+  }
+  .wrap div.info-item-text {
+    min-height: 12rem;
+    text-align: left;
+  }
+
+  div.info-col {
+    box-shadow: none;
+    width: 100%;
+  }
+}
+</style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+<body>
+  <div id="loading" style="display: none;">
+    </div>
+
+<div class="wrap" id="wrap">
+<div class="info">
+<div class="info-col info-col-left">
+  <h1>Apollo6</h1>
+
+<div class="info-item green" id="3D">
+<div class="info-item-text">
+<h3>INSAT - <span class="mark">3D</span></h3>
+<p>INSAT-3D is a meteorological, data relay and satellite aided search and rescue satellite developed by the Indian Space Research Organisation to provide an operational, environmental & storm warning system to protect life & property and also to monitor earth’s surface and carryout oceanic observations and also provide data dissemination capabilities.</p>
+</div>
+<div class="info-item-wrap">
+<div class="info-item-triangle">
+<div class="triangle triangle-top"></div>
+<div class="triangle triangle-bottom"></div>
+<div class="icon sprite-stats"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="info-col info-col-right">
+
+<div class="info-item blue" id="3DR">
+<div class="info-item-text">
+<h3>INSAT - <span class="mark">3DR</span></h3>
+<p>INSAT-3DR similar to INSAT-3D, is an advanced meteorological satellite of India configured with an imaging System and an Atmospheric Sounder.</p>
+</div>
+<div class="info-item-wrap">
+<div class="info-item-triangle">
+<div class="triangle triangle-top"></div>
+<div class="triangle triangle-bottom"></div>
+<div class="icon sprite-man"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+$("#3D").click(function(){
+  $('#wrap').slideUp( 500, function () {
+  $("#loading").show('slide',{direction:'left'},1000,setTimeout(function(){window.location.href="{{ url_for('insat3D_TIR1')}}"},3500));
+});
+});
+
+$("#3DR").click(function(){
+  $('#wrap').slideUp( 500, function () {
+  $("#loading").show('slide',{direction:'left'},1000,setTimeout(function(){window.location.href="{{ url_for('insat3DR_TIR1')}}"},3500));
+});
+});
+</script>
+</body>
+</html>
