@@ -29,5 +29,5 @@
 
 ![alt text](https://github.com/dr3aMer10/NM374_Apollo6/blob/master/readme_imgs/correlationtir1.png)
 ![alt text](https://github.com/dr3aMer10/NM374_Apollo6/blob/master/readme_imgs/ROC25july.png)
-![alt text](https://github.com/dr3aMer10/NM374_Apollo6/blob/master/readme_imgs/validation_insat3d_TIR.png) ![alt text](https://github.com/dr3aMer10/NM374_Apollo6/blob/master/readme_imgs/validation_insat3d_TIR_may.png)
+![alt text-1](https://github.com/dr3aMer10/NM374_Apollo6/blob/master/readme_imgs/validation_insat3d_TIR.png) ![alt text-2](https://github.com/dr3aMer10/NM374_Apollo6/blob/master/readme_imgs/validation_insat3d_TIR_may.png)
 
